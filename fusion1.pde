@@ -45,7 +45,7 @@ void keyPressed(){
 void setup(){
   size(800,500);
   smooth();
-  font= loadFont("Courier10PitchBT-Roman-30.vlw");
+  font= loadFont("ArialMT-14.vlw");
   textFont(font);
   
   imu = new IMU(this, serialPort);
@@ -90,11 +90,12 @@ void draw(){
       text("a="+fround(state.a,3)+" ms^-2", 5, 20 );
       text("v="+fround(state.v,3)+" ms^-1", 5, height/3+20);
       text("s="+fround(state.s,3)+" m", 5, 2*height/3+20);
-      fill(128,128,128);
+      fill(28);
       state.draw(200.0);
       
     } catch (IMUParseException e){
     }
     
   }
+  
 }
