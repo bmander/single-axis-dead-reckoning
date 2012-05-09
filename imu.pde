@@ -47,6 +47,10 @@ class IMU{
     return chunk;
   }
   
+  void clear(){
+    serial.clear();
+  }
+  
   IMUReading read() throws IMUParseException{
     String raw = readRaw();
     if(raw==null){

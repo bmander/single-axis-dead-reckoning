@@ -5,6 +5,7 @@ float MPERSSQUARED_PER_BIT = (1/256.0)*9.807; //(g/LSB)*(m*s^-2/g)=m*s^-2/LSB
 
 IMU imu;
 PFont font;
+boolean running;
 
 class State{
   float s;
@@ -39,6 +40,13 @@ void keyPressed(){
   if(key==' '){
     state.s=0;
     state.v=0;
+  } else if(key=='p'){
+    if(running){
+      running=false;
+    } else {
+      imu.clear();
+      running=true;
+    }
   }
 }
 
@@ -51,11 +59,12 @@ void setup(){
   imu = new IMU(this, serialPort);
   
   state=null;
+  running=true;
 }
 
 void draw(){
   // until the serial stream runs dry
-  while(true){
+  while(running){
     
     try{
       // grab a reading from the IMU
